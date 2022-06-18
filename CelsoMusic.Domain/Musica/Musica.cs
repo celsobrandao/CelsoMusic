@@ -1,5 +1,7 @@
 ﻿using CelsoMusic.Domain.Musica.ValueObject;
+using CelsoMusic.Domain.Usuario;
 using CelsoMusic.Infra.Entidade;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CelsoMusic.Domain.Musica
 {
@@ -11,5 +13,9 @@ namespace CelsoMusic.Domain.Musica
         public string Audio { get; set; }
 
         public List<Genero> Generos { get; set; }
+        public List<Playlist> Playlists { get; set; }
+
+        [NotMapped]
+        public string DescricaoGeneros => Generos == null ? "" : string.Join(", ", Generos);
     }
 }

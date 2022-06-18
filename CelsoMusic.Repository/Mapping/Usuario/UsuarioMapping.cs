@@ -45,7 +45,8 @@ namespace CelsoMusic.Repository.Mapping.Usuario
             builder.Property(x => x.UltimaPlaylistID);
 
             builder.HasMany(x => x.Playlists)
-                .WithOne();
+                .WithOne()
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

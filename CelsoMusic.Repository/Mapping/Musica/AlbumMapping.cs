@@ -27,7 +27,8 @@ namespace CelsoMusic.Repository.Mapping.Musica
             builder.Property(x => x.Imagem);
 
             builder.HasMany(x => x.Musicas)
-                .WithOne();
+                .WithOne()
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

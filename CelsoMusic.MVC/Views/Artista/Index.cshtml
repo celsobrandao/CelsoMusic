@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CelsoMusic.Domain.Musica.Artista>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Artistas</h1>
+
+<p>
+    <a asp-action="Create">Quero Criar Novo Artista</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Albuns)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Generos)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuantidadeAlbuns)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescricaoGeneros)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ID">Detalhar</a>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Alterar</a>
+                    <a asp-action="Delete" asp-route-id="@item.ID">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

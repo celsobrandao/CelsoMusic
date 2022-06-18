@@ -21,8 +21,8 @@ namespace CelsoMusic.Repository.Mapping.Usuario
 
             builder.Property(x => x.Descricao);
 
-            //builder.HasMany(x => x.Musicas)
-            //    .WithMany(x => x.);
+            builder.HasMany(x => x.Musicas)
+                .WithMany(x => x.Playlists);
         }
     }
 }

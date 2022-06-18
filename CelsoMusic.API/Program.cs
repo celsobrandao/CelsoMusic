@@ -1,3 +1,4 @@
+using CelsoMusic.Repository;
 using CelsoMusic.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.RegisterRepository(builder.Configuration.GetConnectionString("CelsoMusic"));
 
 builder.Services.AddDbContext<CelsoMusicContext>(c =>
 {

@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32516.85
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CelsoMusic.Domain", "CelsoMusic.Domain\CelsoMusic.Domain.csproj", "{160F4B89-4342-459E-AFA8-EB7B546ACA26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CelsoMusic.Domain", "CelsoMusic.Domain\CelsoMusic.Domain.csproj", "{160F4B89-4342-459E-AFA8-EB7B546ACA26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CelsoMusic.Repository", "CelsoMusic.Repository\CelsoMusic.Repository.csproj", "{0873D801-0336-4187-8DF1-C05D7128A269}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CelsoMusic.Repository", "CelsoMusic.Repository\CelsoMusic.Repository.csproj", "{0873D801-0336-4187-8DF1-C05D7128A269}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CelsoMusic.Infra", "CelsoMusic.Infra\CelsoMusic.Infra.csproj", "{7D7704A9-86B4-437D-A444-5C8EC812C8BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CelsoMusic.Infra", "CelsoMusic.Infra\CelsoMusic.Infra.csproj", "{7D7704A9-86B4-437D-A444-5C8EC812C8BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CelsoMusic.API", "CelsoMusic.API\CelsoMusic.API.csproj", "{1C793004-5FA6-48C6-B50A-2C97E3642ED3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CelsoMusic.API", "CelsoMusic.API\CelsoMusic.API.csproj", "{1C793004-5FA6-48C6-B50A-2C97E3642ED3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CelsoMusic.MVC", "CelsoMusic.MVC\CelsoMusic.MVC.csproj", "{A8CF3C84-9EFD-45E9-9436-1A29B3131215}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{1C793004-5FA6-48C6-B50A-2C97E3642ED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C793004-5FA6-48C6-B50A-2C97E3642ED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C793004-5FA6-48C6-B50A-2C97E3642ED3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8CF3C84-9EFD-45E9-9436-1A29B3131215}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8CF3C84-9EFD-45E9-9436-1A29B3131215}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8CF3C84-9EFD-45E9-9436-1A29B3131215}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8CF3C84-9EFD-45E9-9436-1A29B3131215}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

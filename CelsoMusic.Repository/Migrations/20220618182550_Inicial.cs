@@ -24,6 +24,18 @@ namespace CelsoMusic.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Generos",
+                columns: table => new
+                {
+                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Nome = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Generos", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Usuarios",
                 columns: table => new
                 {
@@ -59,7 +71,8 @@ namespace CelsoMusic.Repository.Migrations
                         name: "FK_Albuns_Artistas_ArtistaID",
                         column: x => x.ArtistaID,
                         principalTable: "Artistas",
-                        principalColumn: "ID");
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -78,7 +91,8 @@ namespace CelsoMusic.Repository.Migrations
                         name: "FK_Playlists_Usuarios_UsuarioID",
                         column: x => x.UsuarioID,
                         principalTable: "Usuarios",
-                        principalColumn: "ID");
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -90,8 +104,7 @@ namespace CelsoMusic.Repository.Migrations
                     Descricao = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Duracao = table.Column<int>(type: "int", nullable: true),
                     Audio = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AlbumID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    PlaylistID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    AlbumID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -100,42 +113,56 @@ namespace CelsoMusic.Repository.Migrations
                         name: "FK_Musicas_Albuns_AlbumID",
                         column: x => x.AlbumID,
                         principalTable: "Albuns",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "FK_Musicas_Playlists_PlaylistID",
-                        column: x => x.PlaylistID,
-                        principalTable: "Playlists",
-                        principalColumn: "ID");
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Genero",
+                name: "GeneroMusica",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AlbumID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    ArtistaID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    MusicaID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    GenerosID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    MusicasID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Genero", x => x.ID);
+                    table.PrimaryKey("PK_GeneroMusica", x => new { x.GenerosID, x.MusicasID });
                     table.ForeignKey(
-                        name: "FK_Genero_Albuns_AlbumID",
-                        column: x => x.AlbumID,
-                        principalTable: "Albuns",
-                        principalColumn: "ID");
+                        name: "FK_GeneroMusica_Generos_GenerosID",
+                        column: x => x.GenerosID,
+                        principalTable: "Generos",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Genero_Artistas_ArtistaID",
-                        column: x => x.ArtistaID,
-                        principalTable: "Artistas",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "FK_Genero_Musicas_MusicaID",
-                        column: x => x.MusicaID,
+                        name: "FK_GeneroMusica_Musicas_MusicasID",
+                        column: x => x.MusicasID,
                         principalTable: "Musicas",
-                        principalColumn: "ID");
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MusicaPlaylist",
+                columns: table => new
+                {
+                    MusicasID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PlaylistsID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MusicaPlaylist", x => new { x.MusicasID, x.PlaylistsID });
+                    table.ForeignKey(
+                        name: "FK_MusicaPlaylist_Musicas_MusicasID",
+                        column: x => x.MusicasID,
+                        principalTable: "Musicas",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_MusicaPlaylist_Playlists_PlaylistsID",
+                        column: x => x.PlaylistsID,
+                        principalTable: "Playlists",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -144,29 +171,19 @@ namespace CelsoMusic.Repository.Migrations
                 column: "ArtistaID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Genero_AlbumID",
-                table: "Genero",
-                column: "AlbumID");
+                name: "IX_GeneroMusica_MusicasID",
+                table: "GeneroMusica",
+                column: "MusicasID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Genero_ArtistaID",
-                table: "Genero",
-                column: "ArtistaID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Genero_MusicaID",
-                table: "Genero",
-                column: "MusicaID");
+                name: "IX_MusicaPlaylist_PlaylistsID",
+                table: "MusicaPlaylist",
+                column: "PlaylistsID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Musicas_AlbumID",
                 table: "Musicas",
                 column: "AlbumID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Musicas_PlaylistID",
-                table: "Musicas",
-                column: "PlaylistID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Playlists_UsuarioID",
@@ -177,22 +194,28 @@ namespace CelsoMusic.Repository.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Genero");
+                name: "GeneroMusica");
+
+            migrationBuilder.DropTable(
+                name: "MusicaPlaylist");
+
+            migrationBuilder.DropTable(
+                name: "Generos");
 
             migrationBuilder.DropTable(
                 name: "Musicas");
 
             migrationBuilder.DropTable(
-                name: "Albuns");
-
-            migrationBuilder.DropTable(
                 name: "Playlists");
 
             migrationBuilder.DropTable(
-                name: "Artistas");
+                name: "Albuns");
 
             migrationBuilder.DropTable(
                 name: "Usuarios");
+
+            migrationBuilder.DropTable(
+                name: "Artistas");
         }
     }
 }

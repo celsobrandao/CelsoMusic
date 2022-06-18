@@ -80,27 +80,14 @@ namespace CelsoMusic.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("AlbumID")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("ArtistaID")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("MusicaID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Nome")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("AlbumID");
-
-                    b.HasIndex("ArtistaID");
-
-                    b.HasIndex("MusicaID");
-
-                    b.ToTable("Genero");
+                    b.ToTable("Generos", (string)null);
                 });
 
             modelBuilder.Entity("CelsoMusic.Domain.Musica.Musica", b =>
@@ -123,14 +110,9 @@ namespace CelsoMusic.Repository.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<Guid?>("PlaylistID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("ID");
 
                     b.HasIndex("AlbumID");
-
-                    b.HasIndex("PlaylistID");
 
                     b.ToTable("Musicas", (string)null);
                 });
@@ -187,37 +169,50 @@ namespace CelsoMusic.Repository.Migrations
                     b.ToTable("Usuarios", (string)null);
                 });
 
+            modelBuilder.Entity("GeneroMusica", b =>
+                {
+                    b.Property<Guid>("GenerosID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("MusicasID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("GenerosID", "MusicasID");
+
+                    b.HasIndex("MusicasID");
+
+                    b.ToTable("GeneroMusica");
+                });
+
+            modelBuilder.Entity("MusicaPlaylist", b =>
+                {
+                    b.Property<Guid>("MusicasID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("PlaylistsID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("MusicasID", "PlaylistsID");
+
+                    b.HasIndex("PlaylistsID");
+
+                    b.ToTable("MusicaPlaylist");
+                });
+
             modelBuilder.Entity("CelsoMusic.Domain.Musica.Album", b =>
                 {
                     b.HasOne("CelsoMusic.Domain.Musica.Artista", null)
                         .WithMany("Albuns")
-                        .HasForeignKey("ArtistaID");
-                });
-
-            modelBuilder.Entity("CelsoMusic.Domain.Musica.Genero", b =>
-                {
-                    b.HasOne("CelsoMusic.Domain.Musica.Album", null)
-                        .WithMany("Generos")
-                        .HasForeignKey("AlbumID");
-
-                    b.HasOne("CelsoMusic.Domain.Musica.Artista", null)
-                        .WithMany("Generos")
-                        .HasForeignKey("ArtistaID");
-
-                    b.HasOne("CelsoMusic.Domain.Musica.Musica", null)
-                        .WithMany("Generos")
-                        .HasForeignKey("MusicaID");
+                        .HasForeignKey("ArtistaID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CelsoMusic.Domain.Musica.Musica", b =>
                 {
                     b.HasOne("CelsoMusic.Domain.Musica.Album", null)
                         .WithMany("Musicas")
-                        .HasForeignKey("AlbumID");
-
-                    b.HasOne("CelsoMusic.Domain.Usuario.Playlist", null)
-                        .WithMany("Musicas")
-                        .HasForeignKey("PlaylistID");
+                        .HasForeignKey("AlbumID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.OwnsOne("CelsoMusic.Domain.Musica.ValueObject.Duracao", "Duracao", b1 =>
                         {
@@ -243,7 +238,8 @@ namespace CelsoMusic.Repository.Migrations
                 {
                     b.HasOne("CelsoMusic.Domain.Usuario.Usuario", null)
                         .WithMany("Playlists")
-                        .HasForeignKey("UsuarioID");
+                        .HasForeignKey("UsuarioID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CelsoMusic.Domain.Usuario.Usuario", b =>
@@ -291,28 +287,44 @@ namespace CelsoMusic.Repository.Migrations
                     b.Navigation("Senha");
                 });
 
+            modelBuilder.Entity("GeneroMusica", b =>
+                {
+                    b.HasOne("CelsoMusic.Domain.Musica.Genero", null)
+                        .WithMany()
+                        .HasForeignKey("GenerosID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CelsoMusic.Domain.Musica.Musica", null)
+                        .WithMany()
+                        .HasForeignKey("MusicasID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MusicaPlaylist", b =>
+                {
+                    b.HasOne("CelsoMusic.Domain.Musica.Musica", null)
+                        .WithMany()
+                        .HasForeignKey("MusicasID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CelsoMusic.Domain.Usuario.Playlist", null)
+                        .WithMany()
+                        .HasForeignKey("PlaylistsID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("CelsoMusic.Domain.Musica.Album", b =>
                 {
-                    b.Navigation("Generos");
-
                     b.Navigation("Musicas");
                 });
 
             modelBuilder.Entity("CelsoMusic.Domain.Musica.Artista", b =>
                 {
                     b.Navigation("Albuns");
-
-                    b.Navigation("Generos");
-                });
-
-            modelBuilder.Entity("CelsoMusic.Domain.Musica.Musica", b =>
-                {
-                    b.Navigation("Generos");
-                });
-
-            modelBuilder.Entity("CelsoMusic.Domain.Usuario.Playlist", b =>
-                {
-                    b.Navigation("Musicas");
                 });
 
             modelBuilder.Entity("CelsoMusic.Domain.Usuario.Usuario", b =>
