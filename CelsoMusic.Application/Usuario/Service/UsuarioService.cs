@@ -24,6 +24,8 @@ namespace CelsoMusic.Application.Usuario.Service
 
             usuario.AtualizarSenha();
 
+            usuario.Validar();
+
             await _usuarioRepository.Save(usuario);
 
             return _mapper.Map<UsuarioOutputDTO>(usuario);

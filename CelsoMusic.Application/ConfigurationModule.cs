@@ -2,6 +2,7 @@
 using CelsoMusic.Application.Musica.Service.Interfaces;
 using CelsoMusic.Application.Usuario.Service;
 using CelsoMusic.Application.Usuario.Service.Interfaces;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CelsoMusic.Application
@@ -11,6 +12,7 @@ namespace CelsoMusic.Application
         public static IServiceCollection RegisterApplication(this IServiceCollection services)
         {
             services.AddAutoMapper(typeof(ConfigurationModule).Assembly);
+            services.AddMediatR(typeof(ConfigurationModule).Assembly);
 
             #region Musica
             services.AddScoped<IAlbumService, AlbumService>();
