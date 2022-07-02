@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CelsoMusic.Infra", "CelsoMu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CelsoMusic.API", "CelsoMusic.API\CelsoMusic.API.csproj", "{1C793004-5FA6-48C6-B50A-2C97E3642ED3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CelsoMusic.MVC", "CelsoMusic.MVC\CelsoMusic.MVC.csproj", "{A8CF3C84-9EFD-45E9-9436-1A29B3131215}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CelsoMusic.MVC", "CelsoMusic.MVC\CelsoMusic.MVC.csproj", "{A8CF3C84-9EFD-45E9-9436-1A29B3131215}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CelsoMusic.Application", "CelsoMusic.Application\CelsoMusic.Application.csproj", "{2F681E24-34C9-4EE9-AF7A-7B6AD8F4DA61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{A8CF3C84-9EFD-45E9-9436-1A29B3131215}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8CF3C84-9EFD-45E9-9436-1A29B3131215}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8CF3C84-9EFD-45E9-9436-1A29B3131215}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F681E24-34C9-4EE9-AF7A-7B6AD8F4DA61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F681E24-34C9-4EE9-AF7A-7B6AD8F4DA61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F681E24-34C9-4EE9-AF7A-7B6AD8F4DA61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F681E24-34C9-4EE9-AF7A-7B6AD8F4DA61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

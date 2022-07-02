@@ -17,12 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CelsoMusic.Application\CelsoMusic.Application.csproj" />
     <ProjectReference Include="..\CelsoMusic.Domain\CelsoMusic.Domain.csproj" />
     <ProjectReference Include="..\CelsoMusic.Repository\CelsoMusic.Repository.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Views\" />
   </ItemGroup>
 
