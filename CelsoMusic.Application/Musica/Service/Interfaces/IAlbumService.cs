@@ -4,7 +4,7 @@ namespace CelsoMusic.Application.Musica.Service.Interfaces
 {
     public interface IAlbumService
     {
-        Task<AlbumOutputDTO> Criar(AlbumInputDTO dto);
+        Task<AlbumOutputDTO> Criar(AlbumInputDTO dto, Guid artistaID);
         Task<List<AlbumOutputDTO>> ObterTodos();
     }
 }

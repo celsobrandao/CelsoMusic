@@ -12,6 +12,7 @@ namespace CelsoMusic.Domain.Musica
         public string Imagem { get; set; }
 
         public List<Musica> Musicas { get; set; }
+        public Artista Artista { get; set; }
 
         [NotMapped]
         public Duracao Duracao => new(Musicas == null ? 0 : Musicas.Sum(m => m.Duracao.Valor));

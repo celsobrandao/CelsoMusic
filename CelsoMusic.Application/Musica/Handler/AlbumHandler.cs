@@ -17,7 +17,7 @@ namespace CelsoMusic.Application.Musica.Handler
 
         public async Task<CriarAlbumCommandResponse> Handle(CriarAlbumCommand request, CancellationToken cancellationToken)
         {
-            var result = await _albumService.Criar(request.Album);
+            var result = await _albumService.Criar(request.Album, request.ArtistaID);
 
             return new CriarAlbumCommandResponse(result);
         }

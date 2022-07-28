@@ -1,5 +1,7 @@
 ﻿using CelsoMusic.Application.Musica.DTO;
-using CelsoMusic.Application.Musica.Service.Interfaces;
+using CelsoMusic.Application.Musica.Handler.Command;
+using CelsoMusic.Application.Musica.Handler.Query;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CelsoMusic.API.Controllers.Musica
@@ -8,17 +10,17 @@ namespace CelsoMusic.API.Controllers.Musica
     [ApiController]
     public class ArtistaController : ControllerBase
     {
-        private readonly IArtistaService _artistaService;
+        private readonly IMediator _mediator;
 
-        public ArtistaController(IArtistaService artistaService)
+        public ArtistaController(IMediator mediator)
         {
-            _artistaService = artistaService;
+            _mediator = mediator;
         }
 
         [HttpGet]
         public async Task<IActionResult> ObterTodos()
         {
-            return Ok(await _artistaService.ObterTodos());
+            return Ok(await _mediator.Send(new GetAllArtistaQuery()));
         }
 
         [HttpPost]
@@ -27,9 +29,9 @@ namespace CelsoMusic.API.Controllers.Musica
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var result = await _artistaService.Criar(dto);
+            var result = await _mediator.Send(new CriarArtistaCommand(dto));
 
-            return Created($"/{result.ID}", result);
+            return Created($"/{result.Artista.ID}", result);
         }
     }
 }

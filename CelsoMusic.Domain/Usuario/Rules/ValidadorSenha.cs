@@ -6,7 +6,7 @@ namespace CelsoMusic.Domain.Usuario.Rules
 {
     public class ValidadorSenha : AbstractValidator<Senha>
     {
-        private const string _padrao = @"/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/";
+        private const string _padrao = @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#!])[0-9a-zA-Z$*&@#!]{8,}$";
 
         public ValidadorSenha()
         {

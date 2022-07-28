@@ -6,7 +6,7 @@ namespace CelsoMusic.Domain.Usuario.Rules
 {
     public class ValidadorEmail : AbstractValidator<Email>
     {
-        private const string _padrao = @"/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i";
+        private const string _padrao = @"^[a-z0-9.]+@[a-z0-9]+(.[a-z]+)+$";
 
         public ValidadorEmail()
         {

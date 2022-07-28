@@ -22,9 +22,9 @@ namespace CelsoMusic.Application.Usuario.Service
         {
             var usuario = _mapper.Map<UsuarioModel>(dto);
 
-            usuario.AtualizarSenha();
-
             usuario.Validar();
+
+            usuario.AtualizarSenha();
 
             await _usuarioRepository.Save(usuario);
 

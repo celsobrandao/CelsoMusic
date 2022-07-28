@@ -18,20 +18,20 @@ namespace CelsoMusic.Repository.Database
             DbSet = context.Set<T>();
         }
 
-        public async Task<IDbContextTransaction> CreateTransaction()
+        public Task<IDbContextTransaction> CreateTransaction()
         {
-            return await Context.Database.BeginTransactionAsync();
+            return Context.Database.BeginTransactionAsync();
         }
 
-        public async Task<IDbContextTransaction> CreateTransaction(IsolationLevel isolation)
+        public Task<IDbContextTransaction> CreateTransaction(IsolationLevel isolation)
         {
-            return await Context.Database.BeginTransactionAsync(isolation);
+            return Context.Database.BeginTransactionAsync(isolation);
         }
 
-        public async Task Delete(T entity)
+        public Task Delete(T entity)
         {
             DbSet.Remove(entity);
-            await Context.SaveChangesAsync();
+            return Context.SaveChangesAsync();
         }
 
         public async Task<T> Get(object id)
@@ -39,26 +39,23 @@ namespace CelsoMusic.Repository.Database
             return await DbSet.FindAsync(id);
         }
 
-        public async Task<List<T>> GetAll()
+        public Task<List<T>> GetAll()
         {
-            return await DbSet
-                            .AsNoTrackingWithIdentityResolution()
-                            .ToListAsync();
+            return DbSet.AsNoTrackingWithIdentityResolution()
+                        .ToListAsync();
         }
 
         public async Task<IEnumerable<T>> GetAllByCriteria(Expression<Func<T, bool>> expresssion)
         {
-            return await DbSet
-                            .AsNoTrackingWithIdentityResolution()
-                            .Where(expresssion)
-                            .ToListAsync();
+            return await DbSet.AsNoTrackingWithIdentityResolution()
+                              .Where(expresssion)
+                              .ToListAsync();
         }
 
-        public async Task<T> GetOneByCriteria(Expression<Func<T, bool>> expresssion)
+        public Task<T> GetOneByCriteria(Expression<Func<T, bool>> expresssion)
         {
-            return await DbSet
-                            .AsNoTrackingWithIdentityResolution()
-                            .FirstOrDefaultAsync(expresssion);
+            return DbSet.AsNoTrackingWithIdentityResolution()
+                        .FirstOrDefaultAsync(expresssion);
         }
 
         public async Task Save(T entity)
@@ -67,10 +64,10 @@ namespace CelsoMusic.Repository.Database
             await Context.SaveChangesAsync();
         }
 
-        public async Task Update(T entity)
+        public Task Update(T entity)
         {
             DbSet.Update(entity);
-            await Context.SaveChangesAsync();
+            return Context.SaveChangesAsync();
         }
     }
 }

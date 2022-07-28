@@ -15,5 +15,9 @@
 
         public string Formatada => TimeSpan.FromMinutes(Valor).ToString(@"hh\:mm\:ss");
 
+        public override string ToString()
+        {
+            return Formatada;
+        }
     }
 }
