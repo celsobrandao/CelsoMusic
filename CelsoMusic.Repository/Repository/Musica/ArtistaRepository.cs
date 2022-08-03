@@ -16,7 +16,6 @@ namespace CelsoMusic.Repository.Repository.Musica
         {
             return DbSet.Include(x => x.Albuns)
                             .ThenInclude(x => x.Musicas)
-                                .ThenInclude(x => x.Generos)
                         .FirstOrDefaultAsync(x => x.ID == id);
         }
     }

@@ -23,7 +23,6 @@ namespace CelsoMusic.Repository
             #region Musica
             services.AddScoped<IAlbumRepository, AlbumRepository>();
             services.AddScoped<IArtistaRepository, ArtistaRepository>();
-            services.AddScoped<IGeneroRepository, GeneroRepository>();
             services.AddScoped<IMusicaRepository, MusicaRepository>();
             #endregion
 

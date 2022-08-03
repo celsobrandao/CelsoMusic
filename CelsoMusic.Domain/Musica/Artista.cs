@@ -14,10 +14,6 @@ namespace CelsoMusic.Domain.Musica
 
         [NotMapped]
         public int QuantidadeAlbuns => Albuns == null ? 0 : Albuns.Count;
-        [NotMapped]
-        public List<Genero> Generos => Albuns == null ? new List<Genero>() : Albuns.SelectMany(m => m.Generos).Distinct().ToList();
-        [NotMapped]
-        public string DescricaoGeneros => string.Join(", ", Generos);
 
         public void CriarAlbum(string nome, List<Musica> musicas)
         {

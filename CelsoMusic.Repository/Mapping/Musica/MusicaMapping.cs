@@ -29,9 +29,6 @@ namespace CelsoMusic.Repository.Mapping.Musica
             });
 
             builder.Property(x => x.Audio);
-
-            builder.HasMany(x => x.Generos)
-                .WithMany(x => x.Musicas);
         }
     }
 }

@@ -17,10 +17,6 @@ namespace CelsoMusic.Domain.Musica
         [NotMapped]
         public Duracao Duracao => new(Musicas == null ? 0 : Musicas.Sum(m => m.Duracao.Valor));
         [NotMapped]
-        public List<Genero> Generos => Musicas == null ? new List<Genero>() : Musicas.SelectMany(m => m.Generos).Distinct().ToList();
-        [NotMapped]
-        public string DescricaoGeneros => string.Join(", ", Generos);
-        [NotMapped]
         public string DescricaoMusicas => Musicas == null ? "" : string.Join(", ", Musicas.Select(m => m.Nome));
     }
 }

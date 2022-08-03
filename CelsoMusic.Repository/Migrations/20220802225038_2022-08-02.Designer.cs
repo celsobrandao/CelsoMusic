@@ -4,6 +4,7 @@ using CelsoMusic.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CelsoMusic.Repository.Migrations
 {
     [DbContext(typeof(CelsoMusicContext))]
-    partial class CelsoMusicContextModelSnapshot : ModelSnapshot
+    [Migration("20220802225038_2022-08-02")]
+    partial class _20220802
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

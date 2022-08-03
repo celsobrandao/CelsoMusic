@@ -29,7 +29,6 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 #region Musica
 builder.Services.AddScoped<IAlbumRepository, AlbumRepository>();
 builder.Services.AddScoped<IArtistaRepository, ArtistaRepository>();
-builder.Services.AddScoped<IGeneroRepository, GeneroRepository>();
 builder.Services.AddScoped<IMusicaRepository, MusicaRepository>();
 #endregion
 

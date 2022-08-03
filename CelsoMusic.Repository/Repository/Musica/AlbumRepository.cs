@@ -15,14 +15,12 @@ namespace CelsoMusic.Repository.Repository.Musica
         public Task<List<Album>> GetAllCompleto()
         {
             return DbSet.Include(x => x.Musicas)
-                            .ThenInclude(x => x.Generos)
                         .ToListAsync();
         }
 
         public Task<Album> GetCompleto(Guid id)
         {
             return DbSet.Include(x => x.Musicas)
-                            .ThenInclude(x => x.Generos)
                         .FirstOrDefaultAsync(x => x.ID == id);
         }
     }
