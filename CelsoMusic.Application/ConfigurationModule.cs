@@ -17,9 +17,10 @@ namespace CelsoMusic.Application
             #region Musica
             services.AddScoped<IAlbumService, AlbumService>();
             services.AddScoped<IArtistaService, ArtistaService>();
+            services.AddScoped<IMusicaService, MusicaService>();
             #endregion
 
-            #region
+            #region Usuario
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<IPlaylistService, PlaylistService>();
             #endregion

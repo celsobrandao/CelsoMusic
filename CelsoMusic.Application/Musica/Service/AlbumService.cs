@@ -30,11 +30,34 @@ namespace CelsoMusic.Application.Musica.Service
             return _mapper.Map<AlbumOutputDTO>(album);
         }
 
+        public async Task<AlbumOutputDTO> Atualizar(AlbumUpdateDTO dto)
+        {
+            var album = _mapper.Map<Album>(dto);
+
+            await _albumRepository.Update(album);
+
+            return _mapper.Map<AlbumOutputDTO>(album);
+        }
+
+        public async Task Remover(Guid albumID)
+        {
+            var album = await _albumRepository.Get(albumID);
+
+            await _albumRepository.Delete(album);
+        }
+
         public async Task<List<AlbumOutputDTO>> ObterTodos()
         {
             var result = await _albumRepository.GetAllCompleto();
 
             return _mapper.Map<List<AlbumOutputDTO>>(result);
+        }
+
+        public async Task<AlbumOutputDTO> ObterPorID(Guid id)
+        {
+            var result = await _albumRepository.GetCompleto(id);
+
+            return _mapper.Map<AlbumOutputDTO>(result);
         }
     }
 }

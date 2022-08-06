@@ -14,9 +14,14 @@ namespace CelsoMusic.Application.Usuario.Profile
             CreateMap<UsuarioInputDTO, UsuarioModel>()
                 .ForPath(x => x.Email.Valor, f => f.MapFrom(m => m.Email));
 
+            CreateMap<UsuarioUpdateDTO, UsuarioModel>()
+                .ForPath(x => x.Email.Valor, f => f.MapFrom(m => m.Email));
+
             CreateMap<Playlist, PlaylistOutputDTO>();
 
             CreateMap<PlaylistInputDTO, Playlist>();
+
+            CreateMap<PlaylistUpdateDTO, Playlist>();
         }
     }
 }

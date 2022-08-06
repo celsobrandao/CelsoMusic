@@ -23,6 +23,12 @@ namespace CelsoMusic.API.Controllers.Musica
             return Ok(await _mediator.Send(new GetAllArtistaQuery()));
         }
 
+        [HttpGet("{artistaID}")]
+        public async Task<IActionResult> GetByID(Guid artistaID)
+        {
+            return Ok(await _mediator.Send(new GetArtistaQuery(artistaID)));
+        }
+
         [HttpPost]
         public async Task<IActionResult> Criar(ArtistaInputDTO dto)
         {
@@ -32,6 +38,28 @@ namespace CelsoMusic.API.Controllers.Musica
             var result = await _mediator.Send(new CriarArtistaCommand(dto));
 
             return Created($"/{result.Artista.ID}", result);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Atualizar(ArtistaUpdateDTO dto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = await _mediator.Send(new AtualizarArtistaCommand(dto));
+
+            return Ok(result);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Remover(Guid artistaID)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            await _mediator.Send(new RemoverArtistaCommand(artistaID));
+
+            return NoContent();
         }
     }
 }

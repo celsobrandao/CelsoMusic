@@ -6,7 +6,10 @@ using MediatR;
 namespace CelsoMusic.Application.Musica.Handler
 {
     public class AlbumHandler : IRequestHandler<CriarAlbumCommand, CriarAlbumCommandResponse>,
-                                IRequestHandler<GetAllAlbumQuery, GetAllAlbumQueryResponse>
+                                IRequestHandler<AtualizarAlbumCommand, AtualizarAlbumCommandResponse>,
+                                IRequestHandler<RemoverAlbumCommand, RemoverAlbumCommandResponse>,
+                                IRequestHandler<GetAllAlbumQuery, GetAllAlbumQueryResponse>,
+                                IRequestHandler<GetAlbumQuery, GetAlbumQueryResponse>
     {
         private readonly IAlbumService _albumService;
 
@@ -22,11 +25,32 @@ namespace CelsoMusic.Application.Musica.Handler
             return new CriarAlbumCommandResponse(result);
         }
 
+        public async Task<AtualizarAlbumCommandResponse> Handle(AtualizarAlbumCommand request, CancellationToken cancellationToken)
+        {
+            var result = await _albumService.Atualizar(request.Album);
+
+            return new AtualizarAlbumCommandResponse(result);
+        }
+
+        public async Task<RemoverAlbumCommandResponse> Handle(RemoverAlbumCommand request, CancellationToken cancellationToken)
+        {
+            await _albumService.Remover(request.ID);
+
+            return new RemoverAlbumCommandResponse();
+        }
+
         public async Task<GetAllAlbumQueryResponse> Handle(GetAllAlbumQuery request, CancellationToken cancellationToken)
         {
             var result = await _albumService.ObterTodos();
 
             return new GetAllAlbumQueryResponse(result);
+        }
+
+        public async Task<GetAlbumQueryResponse> Handle(GetAlbumQuery request, CancellationToken cancellationToken)
+        {
+            var result = await _albumService.ObterPorID(request.AlbumID);
+
+            return new GetAlbumQueryResponse(result);
         }
     }
 }

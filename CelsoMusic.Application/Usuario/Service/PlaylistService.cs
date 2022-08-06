@@ -39,7 +39,7 @@ namespace CelsoMusic.Application.Usuario.Service
             return _mapper.Map<PlaylistOutputDTO>(playlist);
         }
 
-        public async Task<PlaylistOutputDTO> Atualizar(PlaylistInputDTO dto)
+        public async Task<PlaylistOutputDTO> Atualizar(PlaylistUpdateDTO dto)
         {
             var playlist = _mapper.Map<Playlist>(dto);
 

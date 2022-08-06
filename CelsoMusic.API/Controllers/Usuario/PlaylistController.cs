@@ -35,7 +35,7 @@ namespace CelsoMusic.API.Controllers.Usuario
 
         [HttpPut]
         [Route("Atualizar")]
-        public async Task<IActionResult> Atualizar(PlaylistInputDTO dto)
+        public async Task<IActionResult> Atualizar(PlaylistUpdateDTO dto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

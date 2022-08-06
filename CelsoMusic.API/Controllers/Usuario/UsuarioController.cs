@@ -44,5 +44,29 @@ namespace CelsoMusic.API.Controllers.Usuario
 
             return result.Valido ? Ok(result.ID) : Unauthorized(result.Mensagem);
         }
+
+        [HttpPut]
+        [Route("Atualizar")]
+        public async Task<IActionResult> Atualizar(UsuarioUpdateDTO dto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = await _usuarioService.Atualizar(dto);
+
+            return Ok(result);
+        }
+
+        [HttpDelete]
+        [Route("Remover")]
+        public async Task<IActionResult> Remover(Guid usuarioID)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            await _usuarioService.Remover(usuarioID);
+
+            return NoContent();
+        }
     }
 }

@@ -31,6 +31,26 @@ namespace CelsoMusic.Application.Usuario.Service
             return _mapper.Map<UsuarioOutputDTO>(usuario);
         }
 
+        public async Task<UsuarioOutputDTO> Atualizar(UsuarioUpdateDTO dto)
+        {
+            var usuario = _mapper.Map<UsuarioModel>(dto);
+
+            usuario.Validar();
+
+            usuario.AtualizarSenha();
+
+            await _usuarioRepository.Update(usuario);
+
+            return _mapper.Map<UsuarioOutputDTO>(usuario);
+        }
+
+        public async Task Remover(Guid usuarioID)
+        {
+            var usuario = await _usuarioRepository.Get(usuarioID);
+
+            await _usuarioRepository.Delete(usuario);
+        }
+
         public async Task<UsuarioLoginOutputDTO> ValidarLogin(UsuarioLoginInputDTO dto)
         {
             var senha = SegurancaUtils.HashSHA1(dto.Senha);

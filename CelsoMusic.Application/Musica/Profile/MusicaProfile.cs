@@ -14,13 +14,20 @@ namespace CelsoMusic.Application.Musica.Profile
             CreateMap<MusicaInputDTO, MusicaModel>()
                 .ForPath(x => x.Duracao.Valor, f => f.MapFrom(m => m.Duracao));
 
+            CreateMap<MusicaUpdateDTO, MusicaModel>()
+                .ForPath(x => x.Duracao.Valor, f => f.MapFrom(m => m.Duracao));
+
             CreateMap<Album, AlbumOutputDTO>();
 
             CreateMap<AlbumInputDTO, Album>();
 
+            CreateMap<AlbumUpdateDTO, Album>();
+
             CreateMap<Artista, ArtistaOutputDTO>();
 
             CreateMap<ArtistaInputDTO, Artista>();
+
+            CreateMap<ArtistaUpdateDTO, Artista>();
         }
     }
 }

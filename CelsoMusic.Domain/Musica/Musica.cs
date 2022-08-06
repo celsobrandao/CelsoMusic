@@ -11,6 +11,7 @@ namespace CelsoMusic.Domain.Musica
         public Duracao Duracao { get; set; }
         public string Audio { get; set; }
 
+        public Album Album { get; set; }
         public List<Playlist> Playlists { get; set; }
     }
 }

@@ -16,4 +16,24 @@ namespace CelsoMusic.Application.Musica.Handler.Query
             Artistas = artistas;
         }
     }
+
+    public class GetArtistaQuery : IRequest<GetArtistaQueryResponse>
+    {
+        public Guid ArtistaID { get; set; }
+
+        public GetArtistaQuery(Guid artistaID)
+        {
+            ArtistaID = artistaID;
+        }
+    }
+
+    public class GetArtistaQueryResponse
+    {
+        public ArtistaOutputDTO Artista { get; set; }
+
+        public GetArtistaQueryResponse(ArtistaOutputDTO artista)
+        {
+            Artista = artista;
+        }
+    }
 }

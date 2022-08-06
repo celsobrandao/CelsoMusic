@@ -16,4 +16,24 @@ namespace CelsoMusic.Application.Musica.Handler.Query
             Albuns = albuns;
         }
     }
+
+    public class GetAlbumQuery : IRequest<GetAlbumQueryResponse>
+    {
+        public Guid AlbumID { get; set; }
+
+        public GetAlbumQuery(Guid albumID)
+        {
+            AlbumID = albumID;
+        }
+    }
+
+    public class GetAlbumQueryResponse
+    {
+        public AlbumOutputDTO Album { get; set; }
+
+        public GetAlbumQueryResponse(AlbumOutputDTO album)
+        {
+            Album = album;
+        }
+    }
 }
