@@ -4,6 +4,7 @@ using CelsoMusic.Application.Musica.Service;
 using CelsoMusic.Domain.Musica;
 using CelsoMusic.Domain.Musica.Repository;
 using CelsoMusic.Domain.Musica.ValueObject;
+using CelsoMusic.Infra.Storage.Interfaces;
 using Moq;
 using MusicaModel = CelsoMusic.Domain.Musica.Musica;
 
@@ -18,6 +19,7 @@ namespace CelsoMusic.Test.Application.Musica
             var mockRepository = new Mock<IAlbumRepository>();
             var mockArtistaRepository = new Mock<IArtistaRepository>();
             var mockMapper = new Mock<IMapper>();
+            var mockStorage = new Mock<IStorage>();
 
             var album = new Album()
             {
@@ -36,7 +38,7 @@ namespace CelsoMusic.Test.Application.Musica
             mockRepository.Setup(x => x.Save(It.IsAny<Album>())).Returns(Task.FromResult(album));
             mockArtistaRepository.Setup(x => x.Get(It.IsAny<Artista>())).Returns(Task.FromResult(new Artista()));
 
-            var service = new AlbumService(mockRepository.Object, mockArtistaRepository.Object, mockMapper.Object);
+            var service = new AlbumService(mockRepository.Object, mockArtistaRepository.Object, mockMapper.Object, mockStorage.Object);
 
             var result = await service.Criar(dto, Guid.NewGuid());
 
@@ -50,6 +52,7 @@ namespace CelsoMusic.Test.Application.Musica
             var mockRepository = new Mock<IAlbumRepository>();
             var mockArtistaRepository = new Mock<IArtistaRepository>();
             var mockMapper = new Mock<IMapper>();
+            var mockStorage = new Mock<IStorage>();
 
             var album = new Album()
             {
@@ -68,7 +71,7 @@ namespace CelsoMusic.Test.Application.Musica
             mockRepository.Setup(x => x.Update(It.IsAny<Album>())).Returns(Task.FromResult(album));
             mockArtistaRepository.Setup(x => x.Get(It.IsAny<Artista>())).Returns(Task.FromResult(new Artista()));
 
-            var service = new AlbumService(mockRepository.Object, mockArtistaRepository.Object, mockMapper.Object);
+            var service = new AlbumService(mockRepository.Object, mockArtistaRepository.Object, mockMapper.Object, mockStorage.Object);
 
             var result = await service.Atualizar(dto);
 

@@ -3,6 +3,7 @@ using CelsoMusic.Application.Musica.DTO;
 using CelsoMusic.Application.Musica.Service;
 using CelsoMusic.Domain.Musica;
 using CelsoMusic.Domain.Musica.Repository;
+using CelsoMusic.Infra.Storage.Interfaces;
 using Moq;
 
 namespace CelsoMusic.Test.Application.Musica
@@ -15,6 +16,7 @@ namespace CelsoMusic.Test.Application.Musica
             var dto = new ArtistaInputDTO("Banda ABC", "Banda de metal nórdico", "foto.jpg");
             var mockRepository = new Mock<IArtistaRepository>();
             var mockMapper = new Mock<IMapper>();
+            var mockStorage = new Mock<IStorage>();
 
             var artista = new Artista()
             {
@@ -30,7 +32,7 @@ namespace CelsoMusic.Test.Application.Musica
 
             mockRepository.Setup(x => x.Save(It.IsAny<Artista>())).Returns(Task.FromResult(artista));
 
-            var service = new ArtistaService(mockRepository.Object, mockMapper.Object);
+            var service = new ArtistaService(mockRepository.Object, mockMapper.Object, mockStorage.Object);
 
             var result = await service.Criar(dto);
 
@@ -43,6 +45,7 @@ namespace CelsoMusic.Test.Application.Musica
             var dto = new ArtistaUpdateDTO(Guid.NewGuid(), "Banda ABC", "Banda de metal nórdico", "foto.jpg");
             var mockRepository = new Mock<IArtistaRepository>();
             var mockMapper = new Mock<IMapper>();
+            var mockStorage = new Mock<IStorage>();
 
             var artista = new Artista()
             {
@@ -59,7 +62,7 @@ namespace CelsoMusic.Test.Application.Musica
 
             mockRepository.Setup(x => x.Update(It.IsAny<Artista>())).Returns(Task.FromResult(artista));
 
-            var service = new ArtistaService(mockRepository.Object, mockMapper.Object);
+            var service = new ArtistaService(mockRepository.Object, mockMapper.Object, mockStorage.Object);
 
             var result = await service.Atualizar(dto);
 

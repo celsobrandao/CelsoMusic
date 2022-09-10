@@ -15,7 +15,6 @@ namespace CelsoMusic.Application.Musica.Service
 
         public ArtistaService(IArtistaRepository artistaRepository,
                               IMapper mapper,
-                              IHttpClientFactory httpClientFactory,
                               IStorage storage)
         {
             _artistaRepository = artistaRepository;
