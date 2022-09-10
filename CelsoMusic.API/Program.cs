@@ -2,6 +2,8 @@ using CelsoMusic.Application;
 using CelsoMusic.Domain.Musica.Repository;
 using CelsoMusic.Domain.Usuario.Repository;
 using CelsoMusic.Infra.Repository;
+using CelsoMusic.Infra.Storage;
+using CelsoMusic.Infra.Storage.Interfaces;
 using CelsoMusic.Repository;
 using CelsoMusic.Repository.Context;
 using CelsoMusic.Repository.Database;
@@ -36,6 +38,9 @@ builder.Services.AddScoped<IMusicaRepository, MusicaRepository>();
 builder.Services.AddScoped<IPlaylistRepository, PlaylistRepository>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 #endregion
+
+builder.Services.AddScoped<IStorage, Storage>();
+builder.Services.AddHttpClient();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
