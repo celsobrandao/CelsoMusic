@@ -2,12 +2,15 @@
 using CelsoMusic.Application.Musica.Handler.Command;
 using CelsoMusic.Application.Musica.Handler.Query;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CelsoMusic.API.Controllers.Musica
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class AlbumController : ControllerBase
     {
         private readonly IMediator _mediator;

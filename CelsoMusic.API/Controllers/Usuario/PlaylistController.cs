@@ -1,11 +1,14 @@
 ﻿using CelsoMusic.Application.Usuario.DTO;
 using CelsoMusic.Application.Usuario.Service.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CelsoMusic.API.Controllers.Usuario
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class PlaylistController : Controller
     {
         private readonly IPlaylistService _playlistService;
@@ -22,7 +25,6 @@ namespace CelsoMusic.API.Controllers.Usuario
         }
 
         [HttpPost]
-        [Route("Criar")]
         public async Task<IActionResult> Criar(PlaylistInputDTO dto, Guid usuarioID)
         {
             if (!ModelState.IsValid)
@@ -34,7 +36,6 @@ namespace CelsoMusic.API.Controllers.Usuario
         }
 
         [HttpPut]
-        [Route("Atualizar")]
         public async Task<IActionResult> Atualizar(PlaylistUpdateDTO dto)
         {
             if (!ModelState.IsValid)
@@ -46,7 +47,6 @@ namespace CelsoMusic.API.Controllers.Usuario
         }
 
         [HttpDelete]
-        [Route("Remover")]
         public async Task<IActionResult> Remover(Guid playlistID)
         {
             if (!ModelState.IsValid)
