@@ -26,7 +26,7 @@ namespace CelsoMusic.Test.Application.Musica
                 Nome = dto.Nome,
                 DataLancamento = dto.DataLancamento,
                 Descricao = dto.Descricao,
-                Imagem = dto.Imagem,
+                Imagem = dto.ImagemUrl,
                 Musicas = dto.Musicas.Select(m => new MusicaModel { Nome = m.Nome, Descricao = m.Descricao, Duracao = new Duracao(m.Duracao) }).ToList()
             };
 
@@ -59,7 +59,7 @@ namespace CelsoMusic.Test.Application.Musica
                 ID = dto.ID,
                 Nome = dto.Nome,
                 Descricao = dto.Descricao,
-                Imagem = dto.Imagem,
+                Imagem = dto.ImagemUrl,
                 Musicas = dto.Musicas.Select(m => new MusicaModel { Nome = m.Nome, Descricao = m.Descricao, Duracao = new Duracao(m.Duracao) }).ToList()
             };
 
