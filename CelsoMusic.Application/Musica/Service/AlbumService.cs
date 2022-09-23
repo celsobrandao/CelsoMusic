@@ -28,7 +28,7 @@ namespace CelsoMusic.Application.Musica.Service
 
             album.Artista = await _artistaRepository.Get(artistaID);
 
-            album.Imagem = await _storage.Upload(album.Imagem);
+            album.Imagem = await _storage.Upload(dto.ImagemUrl);
 
             await _albumRepository.Save(album);
 
@@ -38,6 +38,8 @@ namespace CelsoMusic.Application.Musica.Service
         public async Task<AlbumOutputDTO> Atualizar(AlbumUpdateDTO dto)
         {
             var album = _mapper.Map<Album>(dto);
+
+            album.Imagem = await _storage.Upload(dto.ImagemUrl);
 
             await _albumRepository.Update(album);
 
