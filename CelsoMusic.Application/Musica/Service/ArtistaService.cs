@@ -37,6 +37,8 @@ namespace CelsoMusic.Application.Musica.Service
         {
             var artista = _mapper.Map<Artista>(dto);
 
+            artista.Imagem = await _storage.Upload(artista.Imagem);
+
             await _artistaRepository.Update(artista);
 
             return _mapper.Map<ArtistaOutputDTO>(artista);
