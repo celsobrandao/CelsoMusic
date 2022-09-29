@@ -21,7 +21,6 @@ namespace CelsoMusic.Application
             #endregion
 
             #region Usuario
-            services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<IPlaylistService, PlaylistService>();
             #endregion
 

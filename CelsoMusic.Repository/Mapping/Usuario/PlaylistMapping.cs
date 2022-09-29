@@ -15,6 +15,9 @@ namespace CelsoMusic.Repository.Mapping.Usuario
             builder.Property(x => x.ID)
                 .ValueGeneratedOnAdd();
 
+            builder.Property(x => x.UsuarioID)
+                .IsRequired();
+
             builder.Property(x => x.Nome)
                 .IsRequired()
                 .HasMaxLength(200);

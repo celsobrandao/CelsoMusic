@@ -15,7 +15,7 @@ namespace CelsoMusic.Repository.Repository.Usuario
         public Task<List<Playlist>> GetAllByUserID(Guid userID)
         {
             return DbSet.Include(x => x.Musicas)
-                        .Where(x => x.Usuario.ID == userID)
+                        .Where(x => x.UsuarioID == userID)
                         .ToListAsync();
         }
     }

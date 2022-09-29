@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CelsoMusic.Repository.Migrations
 {
     [DbContext(typeof(CelsoMusicContext))]
-    [Migration("20220802225038_2022-08-02")]
-    partial class _20220802
+    [Migration("20220929014017_Inicial")]
+    partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -117,42 +117,12 @@ namespace CelsoMusic.Repository.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<Guid?>("UsuarioID")
+                    b.Property<Guid>("UsuarioID")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("UsuarioID");
 
                     b.ToTable("Playlists", (string)null);
-                });
-
-            modelBuilder.Entity("CelsoMusic.Domain.Usuario.Usuario", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<Guid>("UltimaMusicaID")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("UltimaMusicaTempo")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("UltimaPlaylistID")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Usuarios", (string)null);
                 });
 
             modelBuilder.Entity("MusicaPlaylist", b =>
@@ -182,7 +152,7 @@ namespace CelsoMusic.Repository.Migrations
 
             modelBuilder.Entity("CelsoMusic.Domain.Musica.Musica", b =>
                 {
-                    b.HasOne("CelsoMusic.Domain.Musica.Album", null)
+                    b.HasOne("CelsoMusic.Domain.Musica.Album", "Album")
                         .WithMany("Musicas")
                         .HasForeignKey("AlbumID")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -204,62 +174,9 @@ namespace CelsoMusic.Repository.Migrations
                                 .HasForeignKey("MusicaID");
                         });
 
+                    b.Navigation("Album");
+
                     b.Navigation("Duracao");
-                });
-
-            modelBuilder.Entity("CelsoMusic.Domain.Usuario.Playlist", b =>
-                {
-                    b.HasOne("CelsoMusic.Domain.Usuario.Usuario", "Usuario")
-                        .WithMany("Playlists")
-                        .HasForeignKey("UsuarioID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("Usuario");
-                });
-
-            modelBuilder.Entity("CelsoMusic.Domain.Usuario.Usuario", b =>
-                {
-                    b.OwnsOne("CelsoMusic.Domain.Usuario.ValueObject.Email", "Email", b1 =>
-                        {
-                            b1.Property<Guid>("UsuarioID")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<string>("Valor")
-                                .IsRequired()
-                                .HasMaxLength(100)
-                                .HasColumnType("nvarchar(100)")
-                                .HasColumnName("Email");
-
-                            b1.HasKey("UsuarioID");
-
-                            b1.ToTable("Usuarios");
-
-                            b1.WithOwner()
-                                .HasForeignKey("UsuarioID");
-                        });
-
-                    b.OwnsOne("CelsoMusic.Domain.Usuario.ValueObject.Senha", "Senha", b1 =>
-                        {
-                            b1.Property<Guid>("UsuarioID")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<string>("Valor")
-                                .IsRequired()
-                                .HasMaxLength(200)
-                                .HasColumnType("nvarchar(200)")
-                                .HasColumnName("Senha");
-
-                            b1.HasKey("UsuarioID");
-
-                            b1.ToTable("Usuarios");
-
-                            b1.WithOwner()
-                                .HasForeignKey("UsuarioID");
-                        });
-
-                    b.Navigation("Email");
-
-                    b.Navigation("Senha");
                 });
 
             modelBuilder.Entity("MusicaPlaylist", b =>
@@ -285,11 +202,6 @@ namespace CelsoMusic.Repository.Migrations
             modelBuilder.Entity("CelsoMusic.Domain.Musica.Artista", b =>
                 {
                     b.Navigation("Albuns");
-                });
-
-            modelBuilder.Entity("CelsoMusic.Domain.Usuario.Usuario", b =>
-                {
-                    b.Navigation("Playlists");
                 });
 #pragma warning restore 612, 618
         }

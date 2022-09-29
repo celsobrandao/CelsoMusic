@@ -25,12 +25,12 @@ namespace CelsoMusic.API.Controllers.Usuario
         }
 
         [HttpPost]
-        public async Task<IActionResult> Criar(PlaylistInputDTO dto, Guid usuarioID)
+        public async Task<IActionResult> Criar(PlaylistInputDTO dto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var result = await _playlistService.Criar(dto, usuarioID);
+            var result = await _playlistService.Criar(dto);
 
             return Created($"/{result.ID}", result);
         }

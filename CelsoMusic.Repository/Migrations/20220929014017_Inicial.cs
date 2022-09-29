@@ -24,33 +24,17 @@ namespace CelsoMusic.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Generos",
+                name: "Playlists",
                 columns: table => new
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nome = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Generos", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Usuarios",
-                columns: table => new
-                {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    Senha = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     Nome = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    DataNascimento = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UltimaMusicaID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UltimaMusicaTempo = table.Column<int>(type: "int", nullable: false),
-                    UltimaPlaylistID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Descricao = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UsuarioID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Usuarios", x => x.ID);
+                    table.PrimaryKey("PK_Playlists", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -76,26 +60,6 @@ namespace CelsoMusic.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Playlists",
-                columns: table => new
-                {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nome = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Descricao = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UsuarioID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Playlists", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_Playlists_Usuarios_UsuarioID",
-                        column: x => x.UsuarioID,
-                        principalTable: "Usuarios",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Musicas",
                 columns: table => new
                 {
@@ -113,30 +77,6 @@ namespace CelsoMusic.Repository.Migrations
                         name: "FK_Musicas_Albuns_AlbumID",
                         column: x => x.AlbumID,
                         principalTable: "Albuns",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "GeneroMusica",
-                columns: table => new
-                {
-                    GenerosID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    MusicasID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_GeneroMusica", x => new { x.GenerosID, x.MusicasID });
-                    table.ForeignKey(
-                        name: "FK_GeneroMusica_Generos_GenerosID",
-                        column: x => x.GenerosID,
-                        principalTable: "Generos",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_GeneroMusica_Musicas_MusicasID",
-                        column: x => x.MusicasID,
-                        principalTable: "Musicas",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -171,11 +111,6 @@ namespace CelsoMusic.Repository.Migrations
                 column: "ArtistaID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_GeneroMusica_MusicasID",
-                table: "GeneroMusica",
-                column: "MusicasID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_MusicaPlaylist_PlaylistsID",
                 table: "MusicaPlaylist",
                 column: "PlaylistsID");
@@ -184,23 +119,12 @@ namespace CelsoMusic.Repository.Migrations
                 name: "IX_Musicas_AlbumID",
                 table: "Musicas",
                 column: "AlbumID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Playlists_UsuarioID",
-                table: "Playlists",
-                column: "UsuarioID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "GeneroMusica");
-
-            migrationBuilder.DropTable(
                 name: "MusicaPlaylist");
-
-            migrationBuilder.DropTable(
-                name: "Generos");
 
             migrationBuilder.DropTable(
                 name: "Musicas");
@@ -210,9 +134,6 @@ namespace CelsoMusic.Repository.Migrations
 
             migrationBuilder.DropTable(
                 name: "Albuns");
-
-            migrationBuilder.DropTable(
-                name: "Usuarios");
 
             migrationBuilder.DropTable(
                 name: "Artistas");

@@ -11,7 +11,7 @@ namespace CelsoMusic.Domain.Usuario
         public string Descricao { get; set; }
 
         public List<MusicaModel> Musicas { get; set; }
-        public Usuario Usuario { get; set; }
+        public Guid UsuarioID { get; set; }
 
         [NotMapped]
         public Duracao Duracao => new(Musicas == null ? 0 : Musicas.Sum(m => m.Duracao.Valor));

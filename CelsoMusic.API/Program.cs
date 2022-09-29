@@ -39,7 +39,6 @@ builder.Services.AddScoped<IMusicaRepository, MusicaRepository>();
 
 #region Usuario
 builder.Services.AddScoped<IPlaylistRepository, PlaylistRepository>();
-builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 #endregion
 
 builder.Services.AddScoped<IStorage, Storage>();

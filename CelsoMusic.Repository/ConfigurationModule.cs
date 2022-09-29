@@ -28,7 +28,6 @@ namespace CelsoMusic.Repository
 
             #region Usuario
             services.AddScoped<IPlaylistRepository, PlaylistRepository>();
-            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             #endregion
 
             return services;

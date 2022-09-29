@@ -10,23 +10,19 @@ namespace CelsoMusic.Application.Usuario.Service
     public class PlaylistService : IPlaylistService
     {
         private readonly IPlaylistRepository _playlistRepository;
-        private readonly IUsuarioRepository _usuarioRepository;
         private readonly IMusicaRepository _musicaRepository;
         private readonly IMapper _mapper;
 
-        public PlaylistService(IPlaylistRepository playlistRepository, IUsuarioRepository usuarioRepository, IMusicaRepository musicaRepository, IMapper mapper)
+        public PlaylistService(IPlaylistRepository playlistRepository, IMusicaRepository musicaRepository, IMapper mapper)
         {
             _playlistRepository = playlistRepository;
-            _usuarioRepository = usuarioRepository;
             _musicaRepository = musicaRepository;
             _mapper = mapper;
         }
 
-        public async Task<PlaylistOutputDTO> Criar(PlaylistInputDTO dto, Guid usuarioID)
+        public async Task<PlaylistOutputDTO> Criar(PlaylistInputDTO dto)
         {
             var playlist = _mapper.Map<Playlist>(dto);
-
-            playlist.Usuario = await _usuarioRepository.Get(usuarioID);
 
             playlist.Musicas = new();
             foreach (var musicaID in dto.MusicaIDs)
