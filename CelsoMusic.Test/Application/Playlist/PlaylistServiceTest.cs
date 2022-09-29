@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
 using CelsoMusic.Application.Musica.DTO;
-using CelsoMusic.Application.Usuario.DTO;
-using CelsoMusic.Application.Usuario.Service;
+using CelsoMusic.Application.Playlist.DTO;
+using CelsoMusic.Application.Playlist.Service;
 using CelsoMusic.Domain.Musica.Repository;
-using CelsoMusic.Domain.Usuario;
-using CelsoMusic.Domain.Usuario.Repository;
+using CelsoMusic.Domain.Playlist.Repository;
 using Moq;
 using MusicaModel = CelsoMusic.Domain.Musica.Musica;
+using PlaylistModel = CelsoMusic.Domain.Playlist.Playlist;
 
-namespace CelsoMusic.Test.Application.Usuario
+namespace CelsoMusic.Test.Application.Playlist
 {
     public class PlaylistServiceTest
     {
@@ -21,7 +21,7 @@ namespace CelsoMusic.Test.Application.Usuario
             var mockMusicaRepository = new Mock<IMusicaRepository>();
             var mockMapper = new Mock<IMapper>();
 
-            var playlist = new Playlist()
+            var playlist = new PlaylistModel()
             {
                 UsuarioID = usuarioID,
                 Nome = dto.Nome,
@@ -31,10 +31,10 @@ namespace CelsoMusic.Test.Application.Usuario
 
             var playlistDTO = new PlaylistOutputDTO(Guid.NewGuid(), playlist.Nome, playlist.Descricao, playlist.Musicas.Select(m => new MusicaOutputDTO(Guid.NewGuid(), m.Nome, m.Descricao, m.Duracao.Formatada)).ToList());
 
-            mockMapper.Setup(x => x.Map<Playlist>(dto)).Returns(playlist);
+            mockMapper.Setup(x => x.Map<PlaylistModel>(dto)).Returns(playlist);
             mockMapper.Setup(x => x.Map<PlaylistOutputDTO>(playlist)).Returns(playlistDTO);
 
-            mockRepository.Setup(x => x.Save(It.IsAny<Playlist>())).Returns(Task.FromResult(playlist));
+            mockRepository.Setup(x => x.Save(It.IsAny<PlaylistModel>())).Returns(Task.FromResult(playlist));
             mockMusicaRepository.Setup(x => x.Get(It.IsAny<MusicaModel>())).Returns(Task.FromResult(new MusicaModel()));
 
             var service = new PlaylistService(mockRepository.Object, mockMusicaRepository.Object, mockMapper.Object);
@@ -52,7 +52,7 @@ namespace CelsoMusic.Test.Application.Usuario
             var mockMusicaRepository = new Mock<IMusicaRepository>();
             var mockMapper = new Mock<IMapper>();
 
-            var playlist = new Playlist()
+            var playlist = new PlaylistModel()
             {
                 ID = dto.ID,
                 Nome = dto.Nome,
@@ -62,10 +62,10 @@ namespace CelsoMusic.Test.Application.Usuario
 
             var playlistDTO = new PlaylistOutputDTO(Guid.NewGuid(), playlist.Nome, playlist.Descricao, playlist.Musicas.Select(m => new MusicaOutputDTO(Guid.NewGuid(), m.Nome, m.Descricao, m.Duracao.Formatada)).ToList());
 
-            mockMapper.Setup(x => x.Map<Playlist>(dto)).Returns(playlist);
+            mockMapper.Setup(x => x.Map<PlaylistModel>(dto)).Returns(playlist);
             mockMapper.Setup(x => x.Map<PlaylistOutputDTO>(playlist)).Returns(playlistDTO);
 
-            mockRepository.Setup(x => x.Update(It.IsAny<Playlist>())).Returns(Task.FromResult(playlist));
+            mockRepository.Setup(x => x.Update(It.IsAny<PlaylistModel>())).Returns(Task.FromResult(playlist));
             mockMusicaRepository.Setup(x => x.Get(It.IsAny<MusicaModel>())).Returns(Task.FromResult(new MusicaModel()));
 
             var service = new PlaylistService(mockRepository.Object, mockMusicaRepository.Object, mockMapper.Object);

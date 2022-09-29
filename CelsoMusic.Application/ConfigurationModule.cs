@@ -1,7 +1,7 @@
 ﻿using CelsoMusic.Application.Musica.Service;
 using CelsoMusic.Application.Musica.Service.Interfaces;
-using CelsoMusic.Application.Usuario.Service;
-using CelsoMusic.Application.Usuario.Service.Interfaces;
+using CelsoMusic.Application.Playlist.Service;
+using CelsoMusic.Application.Playlist.Service.Interfaces;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -20,7 +20,7 @@ namespace CelsoMusic.Application
             services.AddScoped<IMusicaService, MusicaService>();
             #endregion
 
-            #region Usuario
+            #region Playlist
             services.AddScoped<IPlaylistService, PlaylistService>();
             #endregion
 

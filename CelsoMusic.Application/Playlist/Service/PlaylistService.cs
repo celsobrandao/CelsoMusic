@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using CelsoMusic.Application.Usuario.DTO;
-using CelsoMusic.Application.Usuario.Service.Interfaces;
+using CelsoMusic.Application.Playlist.DTO;
+using CelsoMusic.Application.Playlist.Service.Interfaces;
 using CelsoMusic.Domain.Musica.Repository;
-using CelsoMusic.Domain.Usuario;
-using CelsoMusic.Domain.Usuario.Repository;
+using CelsoMusic.Domain.Playlist.Repository;
+using PlaylistModel = CelsoMusic.Domain.Playlist.Playlist;
 
-namespace CelsoMusic.Application.Usuario.Service
+namespace CelsoMusic.Application.Playlist.Service
 {
     public class PlaylistService : IPlaylistService
     {
@@ -22,7 +22,7 @@ namespace CelsoMusic.Application.Usuario.Service
 
         public async Task<PlaylistOutputDTO> Criar(PlaylistInputDTO dto)
         {
-            var playlist = _mapper.Map<Playlist>(dto);
+            var playlist = _mapper.Map<PlaylistModel>(dto);
 
             playlist.Musicas = new();
             foreach (var musicaID in dto.MusicaIDs)
@@ -37,7 +37,7 @@ namespace CelsoMusic.Application.Usuario.Service
 
         public async Task<PlaylistOutputDTO> Atualizar(PlaylistUpdateDTO dto)
         {
-            var playlist = _mapper.Map<Playlist>(dto);
+            var playlist = _mapper.Map<PlaylistModel>(dto);
 
             await _playlistRepository.Update(playlist);
 

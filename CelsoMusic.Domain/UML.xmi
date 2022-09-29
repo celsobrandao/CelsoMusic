@@ -122,86 +122,7 @@
         <UML:Attribute visibility="public" isSpecification="false" xmi.id="uca0R9aIbIR8k" type="uQW1P9vgI1sfv" name="Nome"/>
         <UML:Attribute visibility="public" isSpecification="false" xmi.id="ulKe11Uz6IZPC" type="uQW1P9vgI1sfv" name="Descricao"/>
         <UML:Attribute visibility="public" isSpecification="false" xmi.id="uxsadUJ8KZdt4" type="u0wk4Yy32CcuV" name="Musicas"/>
-        <UML:Attribute visibility="public" isSpecification="false" xmi.id="uuq8KZ1nrIZjS" type="uq5sr0m48J80Y" name="Usuario"/>
         <UML:Attribute visibility="public" isSpecification="false" xmi.id="uRaf73U4MekMg" type="uVRloHgK1HAMM" name="Duracao"/>
-       </UML:Classifier.feature>
-      </UML:Class>
-      <UML:Class visibility="public" isSpecification="false" namespace="Logical_View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uq5sr0m48J80Y" name="Usuario">
-       <UML:GeneralizableElement.generalization>
-        <UML:Generalization xmi.idref="uLYwlCXX6iQ0F"/>
-       </UML:GeneralizableElement.generalization>
-       <UML:Classifier.feature>
-        <UML:Attribute visibility="public" isSpecification="false" xmi.id="uj2y7O5lu8w2P" type="uJKlCogq7UtPW" name="Email"/>
-        <UML:Attribute visibility="public" isSpecification="false" xmi.id="uWd9JcfQz0VDz" type="ueJdbx8BHw0wc" name="Senha"/>
-        <UML:Attribute visibility="public" isSpecification="false" xmi.id="uSMU4iqULKD2z" type="uQW1P9vgI1sfv" name="Nome"/>
-        <UML:Attribute visibility="public" isSpecification="false" xmi.id="uUCLONV6OXDEk" type="uSnYn33sUZA16" name="DataNascimento"/>
-        <UML:Attribute visibility="public" isSpecification="false" xmi.id="uXFg8C130SwlG" type="ucu7ehQsszMeg" name="UltimaMusicaID"/>
-        <UML:Attribute visibility="public" isSpecification="false" xmi.id="u0Lz0b39qk7IH" type="utiYkp5kI98w5" name="UltimaMusicaTempo"/>
-        <UML:Attribute visibility="public" isSpecification="false" xmi.id="uUyBbg5McvWJM" type="ucu7ehQsszMeg" name="UltimaPlaylistID"/>
-        <UML:Attribute visibility="public" isSpecification="false" xmi.id="ugfJ7DRvMk0Eq" type="u16EcudPMh7F4" name="Playlists"/>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u7Y4u3kNfXaTF" isOverride="false" name="AtualizarSenha" isInline="false" isVirtual="false"/>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ubpEXEPV46H32" isOverride="false" name="CriarPlaylist" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter visibility="private" isSpecification="false" xmi.id="uJravORxuHTd3" type="uQW1P9vgI1sfv" value="" name="nome"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uUHu7SwV3EvxX" isOverride="false" name="Validar" isInline="false" isVirtual="false"/>
-       </UML:Classifier.feature>
-      </UML:Class>
-      <UML:Class visibility="public" isSpecification="false" namespace="Logical_View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uJKlCogq7UtPW" name="Email">
-       <UML:Classifier.feature>
-        <UML:Attribute visibility="public" isSpecification="false" xmi.id="umFp16k1YT1wt" type="uQW1P9vgI1sfv" name="Valor"/>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uFNrjWiFbNvKm" isOverride="false" name="Email" isInline="false" isVirtual="false"/>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u8Oh6GMm0E66z" isOverride="false" name="Email" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter visibility="private" isSpecification="false" xmi.id="uzTCfVtdqy9dz" type="uQW1P9vgI1sfv" value="" name="valor"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uS6iPoieaygfP" isOverride="true" name="ToString" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uaUXD3C7Fgy6u" type="uQW1P9vgI1sfv"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-       </UML:Classifier.feature>
-      </UML:Class>
-      <UML:Class visibility="public" isSpecification="false" namespace="Logical_View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uJ3cKK5F15BE4" name="ValidadorEmail">
-       <UML:Classifier.feature>
-        <UML:Attribute visibility="private" isSpecification="false" xmi.id="uR8Ia98Tojywa" type="u03W9E1vT8mw2" name="string_padrao"/>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uDeqbkF8ompYy" isOverride="false" name="ValidadorEmail" isInline="false" isVirtual="false"/>
-        <UML:Operation visibility="private" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u0vZjKSGJ1nnX" isOverride="false" name="EmailValido" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uyysnLiVoeGdr" type="upvWASyClhtp4"/>
-          <UML:Parameter visibility="private" isSpecification="false" xmi.id="uHYzRBMXc1wxe" type="uQW1P9vgI1sfv" value="" name="valor"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-       </UML:Classifier.feature>
-      </UML:Class>
-      <UML:Class visibility="public" isSpecification="false" namespace="Logical_View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u2VbCQa7M44n8" name="ValidadorSenha">
-       <UML:Classifier.feature>
-        <UML:Attribute visibility="private" isSpecification="false" xmi.id="uHJCuS29Rawhj" type="u03W9E1vT8mw2" name="string_padrao"/>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uDnfAmXp7arHh" isOverride="false" name="ValidadorSenha" isInline="false" isVirtual="false"/>
-        <UML:Operation visibility="private" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uhnLH1GoQseMp" isOverride="false" name="EmailValido" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter kind="return" xmi.id="uB9YOwspouilb" type="upvWASyClhtp4"/>
-          <UML:Parameter visibility="private" isSpecification="false" xmi.id="uIlnyOaE8N3B0" type="uQW1P9vgI1sfv" value="" name="valor"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
-       </UML:Classifier.feature>
-      </UML:Class>
-      <UML:Class visibility="public" isSpecification="false" namespace="Logical_View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uMlmnP4ZauGUd" name="ValidadorUsuario">
-       <UML:Classifier.feature>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ueUtXzNalkSum" isOverride="false" name="ValidadorUsuario" isInline="false" isVirtual="false"/>
-       </UML:Classifier.feature>
-      </UML:Class>
-      <UML:Class visibility="public" isSpecification="false" namespace="Logical_View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ueJdbx8BHw0wc" name="Senha">
-       <UML:Classifier.feature>
-        <UML:Attribute visibility="public" isSpecification="false" xmi.id="u7hdfypU9zlJ6" type="uQW1P9vgI1sfv" name="Valor"/>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u8lk6OaLDouUF" isOverride="false" name="Senha" isInline="false" isVirtual="false"/>
-        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uKO3L5QjI7LMM" isOverride="false" name="Senha" isInline="false" isVirtual="false">
-         <UML:BehavioralFeature.parameter>
-          <UML:Parameter visibility="private" isSpecification="false" xmi.id="uDg6DfiqJ72FW" type="uQW1P9vgI1sfv" value="" name="valor"/>
-         </UML:BehavioralFeature.parameter>
-        </UML:Operation>
        </UML:Classifier.feature>
       </UML:Class>
       <UML:Class visibility="public" isSpecification="false" namespace="Logical_View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uOd2rCa7Pno2G" name="Entidade">
@@ -254,13 +175,6 @@
           </linepath>
           <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="-250" showstereotype="1" y="-325" text="*" font="MS Shell Dlg 2,8.2,-1,5,50,0,0,0,0,0" localid="urku1K1aIKIL4" pretext="" role="701" width="25" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="u7IopvfAPLzDo" autoresize="1" height="25"/>
           <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="-200" showstereotype="1" y="-325" text="1" font="MS Shell Dlg 2,8.2,-1,5,50,0,0,0,0,0" localid="uozHZZLNErJHO" pretext="" role="702" width="25" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="uw0XkoKBvSplr" autoresize="1" height="25"/>
-         </assocwidget>
-         <assocwidget linecolor="#ff0000" indexa="1" usesdiagramfillcolor="1" widgetbid="ueJdbx8BHw0wc" indexb="1" linewidth="0" seqnum="" textcolor="none" usesdiagramusefillcolor="1" totalcounta="2" totalcountb="2" widgetaid="uq5sr0m48J80Y" font="Sans Serif,9,-1,0,50,0,0,0,0,0" visibilityA="0" visibilityB="0" localid="uBOwmPjRNE7Qz" usefillcolor="1" fillcolor="none" changeabilityA="900" xmi.id="uWd9JcfQz0VDz" changeabilityB="900" autoresize="1" type="510">
-          <linepath layout="Direct">
-           <startpoint startx="-249" starty="-295"/>
-           <endpoint endx="-175" endy="-295"/>
-          </linepath>
-          <floatingtext linecolor="#ff0000" usesdiagramfillcolor="1" linewidth="0" textcolor="none" usesdiagramusefillcolor="1" x="-237.85" showstereotype="1" y="-279" text="Senha" font="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" localid="uT0YuLwEApS2i" pretext="+" role="710" width="50" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="uehdxxi5Poe2o" autoresize="1" height="25"/>
          </assocwidget>
          <assocwidget indexa="1" linecolor="#ff0000" usesdiagramfillcolor="1" widgetbid="uOd2rCa7Pno2G" indexb="1" linewidth="0" seqnum="" textcolor="#000000" usesdiagramusefillcolor="1" totalcounta="2" totalcountb="2" widgetaid="uq5sr0m48J80Y" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="up1l8Ti3y10Yh" usefillcolor="1" fillcolor="none" xmi.id="uLYwlCXX6iQ0F" autoresize="1" type="500">
           <linepath layout="Direct">

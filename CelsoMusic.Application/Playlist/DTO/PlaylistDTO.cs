@@ -1,7 +1,7 @@
 ﻿using CelsoMusic.Application.Musica.DTO;
 using System.ComponentModel.DataAnnotations;
 
-namespace CelsoMusic.Application.Usuario.DTO
+namespace CelsoMusic.Application.Playlist.DTO
 {
     public record PlaylistInputDTO([Required(ErrorMessage = "O ID do Usuário deve ser informado.")] Guid UsuarioID,
                                    [Required(ErrorMessage = "O Nome deve ser informado.")] string Nome,

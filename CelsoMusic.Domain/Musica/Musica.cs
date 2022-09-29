@@ -1,6 +1,6 @@
 ﻿using CelsoMusic.Domain.Musica.ValueObject;
-using CelsoMusic.Domain.Usuario;
 using CelsoMusic.Infra.Entidade;
+using PlaylistModel = CelsoMusic.Domain.Playlist.Playlist;
 
 namespace CelsoMusic.Domain.Musica
 {
@@ -12,6 +12,6 @@ namespace CelsoMusic.Domain.Musica
         public string Audio { get; set; }
 
         public Album Album { get; set; }
-        public List<Playlist> Playlists { get; set; }
+        public List<PlaylistModel> Playlists { get; set; }
     }
 }

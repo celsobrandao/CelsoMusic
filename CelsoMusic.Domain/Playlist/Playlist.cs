@@ -3,7 +3,7 @@ using CelsoMusic.Infra.Entidade;
 using System.ComponentModel.DataAnnotations.Schema;
 using MusicaModel = CelsoMusic.Domain.Musica.Musica;
 
-namespace CelsoMusic.Domain.Usuario
+namespace CelsoMusic.Domain.Playlist
 {
     public class Playlist : Entidade<Guid>
     {

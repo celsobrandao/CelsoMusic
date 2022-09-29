@@ -1,6 +1,6 @@
-﻿using CelsoMusic.Application.Usuario.DTO;
+﻿using CelsoMusic.Application.Playlist.DTO;
 
-namespace CelsoMusic.Application.Usuario.Service.Interfaces
+namespace CelsoMusic.Application.Playlist.Service.Interfaces
 {
     public interface IPlaylistService
     {

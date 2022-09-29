@@ -1,7 +1,7 @@
 using CelsoMusic.API.Configuration;
 using CelsoMusic.Application;
 using CelsoMusic.Domain.Musica.Repository;
-using CelsoMusic.Domain.Usuario.Repository;
+using CelsoMusic.Domain.Playlist.Repository;
 using CelsoMusic.Infra.Repository;
 using CelsoMusic.Infra.Storage;
 using CelsoMusic.Infra.Storage.Interfaces;
@@ -9,7 +9,7 @@ using CelsoMusic.Repository;
 using CelsoMusic.Repository.Context;
 using CelsoMusic.Repository.Database;
 using CelsoMusic.Repository.Repository.Musica;
-using CelsoMusic.Repository.Repository.Usuario;
+using CelsoMusic.Repository.Repository.Playlist;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,7 +37,7 @@ builder.Services.AddScoped<IArtistaRepository, ArtistaRepository>();
 builder.Services.AddScoped<IMusicaRepository, MusicaRepository>();
 #endregion
 
-#region Usuario
+#region Playlist
 builder.Services.AddScoped<IPlaylistRepository, PlaylistRepository>();
 #endregion
 

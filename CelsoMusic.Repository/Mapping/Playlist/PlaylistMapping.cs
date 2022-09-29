@@ -1,12 +1,12 @@
-﻿using CelsoMusic.Domain.Usuario;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using PlaylistModel = CelsoMusic.Domain.Playlist.Playlist;
 
-namespace CelsoMusic.Repository.Mapping.Usuario
+namespace CelsoMusic.Repository.Mapping.Playlist
 {
-    public class PlaylistMapping : IEntityTypeConfiguration<Playlist>
+    public class PlaylistMapping : IEntityTypeConfiguration<PlaylistModel>
     {
-        public void Configure(EntityTypeBuilder<Playlist> builder)
+        public void Configure(EntityTypeBuilder<PlaylistModel> builder)
         {
             builder.ToTable("Playlists");
 

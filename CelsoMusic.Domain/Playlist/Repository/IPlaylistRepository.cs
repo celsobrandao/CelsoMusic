@@ -1,6 +1,6 @@
 ﻿using CelsoMusic.Infra.Repository;
 
-namespace CelsoMusic.Domain.Usuario.Repository
+namespace CelsoMusic.Domain.Playlist.Repository
 {
     public interface IPlaylistRepository : IRepository<Playlist>
     {

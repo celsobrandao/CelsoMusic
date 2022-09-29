@@ -1,10 +1,10 @@
-﻿using CelsoMusic.Application.Usuario.DTO;
-using CelsoMusic.Application.Usuario.Service.Interfaces;
+﻿using CelsoMusic.Application.Playlist.DTO;
+using CelsoMusic.Application.Playlist.Service.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CelsoMusic.API.Controllers.Usuario
+namespace CelsoMusic.API.Controllers.Playlist
 {
     [Route("api/[controller]")]
     [ApiController]
